@@ -1,0 +1,11 @@
+backpack = []
+
+print("Please enter 5 items you'd pack for school:")
+
+for i in range(5):
+    backpack.append(input("Enter item: "))
+
+print("\nYour backpack items:")
+for item in backpack:
+    print(item)
+    
