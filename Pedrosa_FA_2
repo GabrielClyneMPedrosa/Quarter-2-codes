@@ -1,4 +1,4 @@
-def calculate_delivery_fee(distance, rate):
+     def calculate_delivery_fee(distance, rate):
     return distance * rate
 
 # User input
