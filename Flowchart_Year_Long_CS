@@ -1,0 +1,58 @@
+Start
+    Declare Student_List as Array of String
+    Declare Student_Averages as Array of Real
+    Declare Student_Count as Integer
+    Set Student_Count = 0
+
+    Call Get_Student_Data(Name, ID, Grades)
+    Add Name, ID, Grades to Student_List
+    Student_Count = Student_Count + 1
+
+    Output "Do you want to process multiple students? (Yes/No)"
+    Input Multi_Student_Flag
+
+    While Multi_Student_Flag = "Yes"
+        Call Get_Student_Data(Name, ID, Grades)
+        Add Name, ID, Grades to Student_List
+        Student_Count = Student_Count + 1
+
+        Output "Add another student? (Yes/No)"
+        Input Multi_Student_Flag
+    End While
+
+    For i = 0 to Student_Count - 1
+        Declare Sum_Grades as Real
+        Declare Subject_Count as Integer
+        Set Sum_Grades = 0
+        Set Subject_Count = 0
+
+        Declare List_2_5_Better as Array of String
+        Declare List_2_75_Lower as Array of String
+
+        For each Subject in Grades
+            Set Remark = Assign_Remark(Grade)
+
+            If Grade <= 2.5 Then
+                Add Subject to List_2_5_Better
+            End If
+
+            If Grade <= 2.75 Then
+                Add Subject to List_2_75_Lower
+            End If
+
+            Sum_Grades = Sum_Grades + Grade
+            Subject_Count = Subject_Count + 1
+        End For
+
+        Set Avg = Sum_Grades / Subject_Count
+        Add Avg to Student_Averages
+
+        Output "Results for " + Name
+        Output "General Average: " + Avg
+    End For
+
+    If Student_Count > 1 Then
+        Set Combined_Avg = Average(Student_Averages)
+        Output "Combined General Average: " + Combined_Avg
+    End If
+End
